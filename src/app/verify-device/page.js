@@ -32,7 +32,7 @@ export default function VerifyDevicePage() {
 
     // إذا لم يتم العثور عليه في sessionStorage، تحقق من معلمات URL
     
-  }, [searchParams]); // يعتمد على searchParams للتحقق من تحديثات URL
+  }, []); // يعتمد على searchParams للتحقق من تحديثات URL
 
   const handleSubmit = async (e) => {
     e.preventDefault();
