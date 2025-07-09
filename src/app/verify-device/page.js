@@ -32,10 +32,7 @@ export default function VerifyDevicePage() {
     }
 
     // إذا لم يتم العثور عليه في sessionStorage، تحقق من معلمات URL
-    const emailFromUrl = searchParams.get("email");
-    if (emailFromUrl) {
-      setEmail(emailFromUrl);
-    }
+    
   }, [searchParams]); // يعتمد على searchParams للتحقق من تحديثات URL
 
   const handleSubmit = async (e) => {
