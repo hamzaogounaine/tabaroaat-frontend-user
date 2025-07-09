@@ -16,7 +16,6 @@ export default function VerifyDevicePage() {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
-  const searchParams = useSearchParams(); // للحصول على معلمات URL
 
   // استخراج البريد الإلكتروني من sessionStorage أو معلمات URL عند تحميل المكون
   useEffect(() => {
