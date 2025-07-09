@@ -46,16 +46,37 @@ export default function LoginPage() {
         withCredentials: true,
       })
       .then((res) => {
-        if(res.status === 200 || res.status === 201) router.push("/");
-      })
+        // Check if the response indicates a need for device verification
+        if (res.data && res.data.requiresVerificationCode === true) {
+          console.log('New device/IP detected, redirecting for verification.');
+          sessionStorage.setItem('deviceVerificationEmail' , res.data.email)
+          router.push("/verify-device");
+        }
+        // Only proceed to full login if there's no pending verification code AND status is 200/201
+        else if (res.status === 200 || res.status === 201) {
+          console.log('Login successful!', res);
+          // At this point, the server has issued a JWT and set the cookie
+          // You might also want to save user details to a global state/context here
+          router.push("/"); // Redirect to the main dashboard/homepage
+        } else {
+          // Handle other successful but non-login statuses if any, or general success
+          console.log('Unhandled successful response:', res);
+        }
+    })
+    
       .catch((err) => {
-      if (err.response) {
-        setError(err.response.data.message || 'فشل التسجيل. يرجى المحاولة مرة أخرى.');
-      } else if (err.request) {
-        setError('لا يوجد استجابة من الخادم. يرجى التحقق من اتصالك بالإنترنت.');
-      } else {
-        setError('حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.');
-      }})
+        if (err.response) {
+          setError(
+            err.response.data.message || "فشل التسجيل. يرجى المحاولة مرة أخرى."
+          );
+        } else if (err.request) {
+          setError(
+            "لا يوجد استجابة من الخادم. يرجى التحقق من اتصالك بالإنترنت."
+          );
+        } else {
+          setError("حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.");
+        }
+      })
       .finally(() => setLoading(false));
     console.log("Login attempt:", formData);
   };

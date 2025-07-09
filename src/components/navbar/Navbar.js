@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import axios from "axios";
 
 const navigationItems = [
   { name: "الرئيسية", href: "/" },
@@ -22,11 +23,12 @@ export default function Navbar() {
 
   
   React.useEffect(() => {
-    const token = document.cookie.split('; ').find(row => row.startsWith('token='));
-    console.log(token)
-    if(token) {
-      setLoggedId(true)
+    const checkStatus = async () => {
+      await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/status`)
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
     }
+    checkStatus()
   },[])
 
   return (
