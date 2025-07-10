@@ -38,6 +38,23 @@
     "loginFailed": "Échec de la connexion. Veuillez réessayer.",
     "noServerResponse": "Pas de réponse du serveur. Vérifiez votre connexion internet.",
     "unexpectedError": "Une erreur inattendue est survenue. Veuillez réessayer."
+  },
+  "forgotPassword" : {
+    "title": "Mot de passe oublié ?",
+    "subtitle": "Entrez votre adresse e-mail pour recevoir un lien de réinitialisation",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "Entrez votre e-mail",
+    "sending": "Envoi en cours",
+    "sendButton": "Envoyer le lien de réinitialisation",
+    "success": "Si l'e-mail est enregistré chez nous, vous recevrez bientôt un lien de réinitialisation du mot de passe.",
+    "error": "Échec de l'envoi du lien de réinitialisation. Veuillez réessayer.",
+    "remember": "Vous vous souvenez de votre mot de passe ?",
+    "login": "Se connecter",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsConditions": "Conditions d'utilisation",
+    "help": "Aide",
+    "allRightsReserved": "© 2024 Tous droits réservés"
   }
+  
   
 }

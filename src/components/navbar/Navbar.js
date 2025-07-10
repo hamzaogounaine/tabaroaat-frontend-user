@@ -2,12 +2,18 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { ArrowDown, Languages, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import axios from "axios";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/routing";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -67,7 +73,7 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div
-              className={`flex items-baseline ${
+              className={`flex items-center  ${
                 isRTL ? "space-x-reverse space-x-8 mr-10" : "space-x-8 ml-10"
               }`}
             >
@@ -75,7 +81,7 @@ export default function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-50"
+                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium text-center transition-colors duration-200 hover:bg-gray-50"
                 >
                   {item.name}
                 </Link>
@@ -83,24 +89,31 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex hap-4">
+          <div className="hidden md:flex items-center gap-2">
             <Link href="/donate">
               <Button className="bg-red-600 hover:bg-red-700 text-white">
                 {t("donateNow")}
               </Button>
             </Link>
-            <select
-              className="ml-4 px-3 py-2 border border-gray-300 rounded-md text-sm"
-              value={locale}
-              onChange={handleLocaleChange}
-            >
-              {languages.map((lang) => (
-                <option key={lang.code} value={lang.code}>
-                  {lang.label}
-                </option>
-              ))}
-            </select>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline">
+                  {languages.find((lang) => lang.code === locale)?.label ||
+                    "Language"}
+                  <Languages />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                {languages.map((lang) => (
+                  <DropdownMenuItem
+                    key={lang.code}
+                    onClick={() => router.push(pathname, { locale: lang.code })}
+                  >
+                    {lang.label}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
             {loggedIn && <Button className="ml-4">{t("logout")}</Button>}
           </div>
 
@@ -135,13 +148,33 @@ export default function Navbar() {
                       {item.name}
                     </Link>
                   ))}
-                  <div className="pt-4">
+                  <div className="p-4">
                     <Link href="/donate">
                       <Button className="w-full bg-red-600 hover:bg-red-700 text-white">
                         {t("donateNow")}
                       </Button>
                     </Link>
                   </div>
+                </div>
+                <div className="absolute bottom-2 p-3">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                  <Button variant="outline">
+                    {languages.find(lang => lang.code === locale)?.label || "Language"} 
+                    <Languages />
+                  </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                  {languages.map((lang) => (
+                    <DropdownMenuItem 
+                    key={lang.code} 
+                    onClick={() => router.push(pathname, { locale: lang.code })}
+                    >
+                    {lang.label}
+                    </DropdownMenuItem>
+                  ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
                 </div>
               </SheetContent>
             </Sheet>

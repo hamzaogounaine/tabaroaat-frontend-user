@@ -34,6 +34,7 @@ export default function LoginPage() {
     email: "",
     password: "",
     rememberMe: false,
+    lang : locale
   });
 
   const handleInputChange = (e) => {

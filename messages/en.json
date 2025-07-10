@@ -38,6 +38,23 @@
             "loginFailed": "Login failed. Please try again.",
             "noServerResponse": "No response from server. Check your internet connection.",
             "unexpectedError": "An unexpected error occurred. Please try again."
+          },
+          "forgotPassword" : {
+            "title": "Forgot your password?",
+            "subtitle": "Enter your email address to receive a password reset link",
+            "emailLabel": "Email",
+            "emailPlaceholder": "Enter your email",
+            "sending": "Sending",
+            "sendButton": "Send reset link",
+            "success": "If the email is registered with us, you will receive a password reset link shortly.",
+            "error": "Failed to send the password reset link. Please try again.",
+            "remember": "Remembered your password?",
+            "login": "Log in",
+            "privacyPolicy": "Privacy Policy",
+            "termsConditions": "Terms & Conditions",
+            "help": "Help",
+            "allRightsReserved": "© 2024 All rights reserved"
           }
+          
   }
   
