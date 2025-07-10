@@ -1,0 +1,16 @@
+{
+  "Navbar": {
+    "brand": "Tabaroaat",
+    "home": "Accueil",
+    "donations": "Dons",
+    "about": "À propos de nous",
+    "services": "Services",
+    "projects": "Projets",
+    "news": "Actualités",
+    "contact": "Contactez-nous",
+    "donateNow": "Faire un don",
+    "logout": "Se déconnecter",
+    "openMenu": "Ouvrir le menu",
+    "logo": "Logo"
+  }
+}

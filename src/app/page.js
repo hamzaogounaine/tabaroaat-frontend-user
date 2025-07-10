@@ -13,6 +13,7 @@ import LoginPage from "@/components/auth/user/Login"
 export default function Page() {
   return (
     <div>
+      
       <HeroSection />
       {/* <LoginPage /> */}
       <AboutSection />

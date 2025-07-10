@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import axios from "axios";
 import { redirect, RedirectType, useRouter } from "next/navigation";
+import { useTranslations } from 'next-intl'; 
 
 export default function LoginPage() {
   const router = useRouter();
@@ -28,6 +29,7 @@ export default function LoginPage() {
     email: "",
     password: "",
   });
+  const t = useTranslations('Home');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -90,7 +92,7 @@ export default function LoginPage() {
         {/* Logo */}
         <div className="text-center mb-8">
           <Link href="/" className="text-3xl font-bold text-red-600">
-            تبرعات
+            {t('title')}
           </Link>
           <p className="text-gray-600 mt-2">مرحباً بك مرة أخرى</p>
         </div>
