@@ -1,42 +1,57 @@
-import { NextResponse } from 'next/server';
-import jwt from 'jsonwebtoken'; // Import the jsonwebtoken 
-import createMiddleware from "next-intl/middleware";
+import { NextResponse } from "next/server";
+import { jwtVerify } from "jose";
 import { routing } from "./i18n/routing";
+import createMiddleware from "next-intl/middleware";
 
-const intlMiddleware = createMiddleware(routing);
+// Create a secret key from your env
+const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET);
 
-export default function middleware(request) {
-  console.log('Running middleware...');
+export async function middleware(request) {
+  const { pathname } = request.nextUrl;
 
-  // Check if this is a protected route that needs authentication
-  const protectedRoutes = ['/donate', '/profile'];
-  const isProtectedRoute = protectedRoutes.some(route => request.nextUrl.pathname.includes(route));
+  // Locale detection
+  const locale = pathname.split("/")[1];
+  const isLocale = routing.locales.includes(locale);
+  const localeFromPath = isLocale ? locale : routing.defaultLocale;
 
-  if (isProtectedRoute) {
-    const token = request.cookies.get('token')?.value;
-    console.log('token', token);
-
-    if (!token) {
-      console.log('No token found. Redirecting to login.');
-      return NextResponse.redirect(new URL('/login', request.url));
-    }
-
-    try {
-      jwt.verify(token, process.env.NEXT_PUBLIC_JWT_SECRET); 
-      console.log('Token is valid and not expired.');
-    } catch (error) {
-      console.error('Token verification failed:', error.message);
-      const response = NextResponse.redirect(new URL('/login', request.url));
-      response.cookies.delete('token'); // Clear the expired/invalid token
-      return response;
-    }
+  // Handle locale redirection
+  if (!isLocale) {
+    const intlMiddleware = createMiddleware(routing);
+    return intlMiddleware(request);
   }
 
-  // Apply internationalization middleware
-  return intlMiddleware(request);
+  // Check if the route is protected
+  const protectedPaths = ["/donate", "/profile"];
+  const isProtected = protectedPaths.some((path) =>
+    pathname.startsWith(`/${locale}${path}`)
+  );
+
+  if (!isProtected) return NextResponse.next();
+
+  // JWT check using jose (Edge-compatible)
+  const token = request.cookies.get("token")?.value;
+
+  if (!token) {
+    console.log("⛔ No token found.");
+    return NextResponse.redirect(new URL(`/${locale}/login`, request.url));
+  }
+
+  try {
+    await jwtVerify(token, secret); // Will throw if invalid/expired
+    console.log("✅ Token is valid.");
+    return NextResponse.next();
+  } catch (err) {
+    console.error("⛔ Invalid token:", err.message);
+    const response = NextResponse.redirect(new URL(`/${locale}/login`, request.url));
+    response.cookies.delete("token");
+    return response;
+  }
 }
 
-// Apply middleware only to protected routes
+
 export const config = {
-  matcher: ['/donate/:path*', '/profile/:path*' , "/(pt|en)/:path*"], // update for your protected routes
+  matcher: [
+    "/",
+    "/((?!api|_next|favicon.ico|.*\\..*).*)",
+  ],
 };

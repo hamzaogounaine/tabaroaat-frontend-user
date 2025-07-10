@@ -12,6 +12,33 @@
       "logout": "تسجيل الخروج",
       "openMenu": "فتح القائمة",
       "logo": "الشعار"
-    }
+    },
+    "Login" :{
+        "title": "تبرعات",
+        "welcomeBack": "مرحباً بك مرة أخرى",
+        "loginTitle": "تسجيل الدخول",
+        "loginSubtitle": "ادخل بياناتك للوصول إلى حسابك",
+        "emailLabel": "البريد الإلكتروني",
+        "emailPlaceholder": "أدخل بريدك الإلكتروني",
+        "passwordLabel": "كلمة المرور",
+        "passwordPlaceholder": "أدخل كلمة المرور",
+        "rememberMe": "تذكرني",
+        "forgotPassword": "نسيت كلمة المرور؟",
+        "loginButton": "تسجيل الدخول",
+        "loggingIn": "جار التسجيل",
+        "or": "أو",
+        "loginWithGoogle": "تسجيل الدخول بـ Google",
+        "loginWithFacebook": "تسجيل الدخول بـ Facebook",
+        "noAccount": "ليس لديك حساب؟",
+        "signUp": "إنشاء حساب جديد",
+        "privacyPolicy": "سياسة الخصوصية",
+        "termsConditions": "الشروط والأحكام",
+        "help": "المساعدة",
+        "allRightsReserved": "© 2024 جميع الحقوق محفوظة",
+        "loginFailed": "فشل التسجيل. يرجى المحاولة مرة أخرى.",
+        "noServerResponse": "لا يوجد استجابة من الخادم. يرجى التحقق من اتصالك بالإنترنت.",
+        "unexpectedError": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى."
+      }
+      
   }
   

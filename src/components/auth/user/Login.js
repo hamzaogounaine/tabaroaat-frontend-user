@@ -17,25 +17,30 @@ import {
   Loader,
 } from "lucide-react";
 import axios from "axios";
-import { redirect, RedirectType, useRouter } from "next/navigation";
-import { useTranslations } from 'next-intl'; 
+import { useRouter } from "next/navigation";
+import { useTranslations, useLocale } from "next-intl";
 
 export default function LoginPage() {
   const router = useRouter();
+  const t = useTranslations("Login");
+  const locale = useLocale();
+
+  const isRtl = locale === "ar";
+
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    rememberMe: false,
   });
-  const t = useTranslations('Home');
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
@@ -43,67 +48,56 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    await axios
-      .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/login`, formData, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        // Check if the response indicates a need for device verification
-        if (res.data && res.data.requiresVerificationCode === true) {
-          console.log('New device/IP detected, redirecting for verification.');
-          sessionStorage.setItem('deviceVerificationEmail' , res.data.email)
-          router.push("/verify-device");
-        }
-        // Only proceed to full login if there's no pending verification code AND status is 200/201
-        else if (res.status === 200 || res.status === 201) {
-          console.log('Login successful!', res);
-          // At this point, the server has issued a JWT and set the cookie
-          // You might also want to save user details to a global state/context here
-          router.push("/"); // Redirect to the main dashboard/homepage
-        } else {
-          // Handle other successful but non-login statuses if any, or general success
-          console.log('Unhandled successful response:', res);
-        }
-    })
-    
-      .catch((err) => {
-        if (err.response) {
-          setError(
-            err.response.data.message || "فشل التسجيل. يرجى المحاولة مرة أخرى."
-          );
-        } else if (err.request) {
-          setError(
-            "لا يوجد استجابة من الخادم. يرجى التحقق من اتصالك بالإنترنت."
-          );
-        } else {
-          setError("حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.");
-        }
-      })
-      .finally(() => setLoading(false));
-    console.log("Login attempt:", formData);
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/login`,
+        formData,
+        { withCredentials: true }
+      );
+
+      if (res.data && res.data.requiresVerificationCode === true) {
+        sessionStorage.setItem("deviceVerificationEmail", res.data.email);
+        router.push("/verify-device");
+      } else if (res.status === 200 || res.status === 201) {
+        router.push("/");
+      } else {
+        console.log("Unhandled successful response:", res);
+      }
+    } catch (err) {
+      if (err.response) {
+        setError(err.response.data.message || t("loginFailed"));
+      } else if (err.request) {
+        setError(t("noServerResponse"));
+      } else {
+        setError(t("unexpectedError"));
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div
       className="min-h-screen bg-gradient-to-br bg-black/20 flex items-center justify-center p-4"
-      dir="rtl"
+      dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="w-full max-w-md">
         {/* Logo */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-8" style={{ direction: isRtl ? "rtl" : "ltr" }}>
           <Link href="/" className="text-3xl font-bold text-red-600">
-            {t('title')}
+            {t("title")}
           </Link>
-          <p className="text-gray-600 mt-2">مرحباً بك مرة أخرى</p>
+          <p className="text-gray-600 mt-2">{t("welcomeBack")}</p>
         </div>
 
         <Card className="shadow-lg">
-          <CardHeader className="text-center">
+          <CardHeader className="text-center" style={{ direction: isRtl ? "rtl" : "ltr" }}>
             <CardTitle className="text-2xl font-bold text-gray-800">
-              تسجيل الدخول
+              {t("loginTitle")}
             </CardTitle>
-            <p className="text-gray-600">ادخل بياناتك للوصول إلى حسابك</p>
+            <p className="text-gray-600">{t("loginSubtitle")}</p>
           </CardHeader>
+
           {error && (
             <div className="px-2">
               <div className="rounded bg-red-500 text-white text-center py-1 text-sm">
@@ -111,23 +105,24 @@ export default function LoginPage() {
               </div>
             </div>
           )}
-          <CardContent className="space-y-6">
+
+          <CardContent className="space-y-6" style={{ direction: isRtl ? "rtl" : "ltr" }}>
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Email Field */}
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-right block">
-                  البريد الإلكتروني
+                <Label htmlFor="email" className={`block ${isRtl ? "text-right" : "text-left"}`}>
+                  {t("emailLabel")}
                 </Label>
                 <div className="relative">
-                  <Mail className="absolute right-3 top-3 h-4 w-4 text-gray-400" />
+                  <Mail className={`absolute ${isRtl ? "right-3" : "left-3"} top-3 h-4 w-4 text-gray-400`} />
                   <Input
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="أدخل بريدك الإلكتروني"
+                    placeholder={t("emailPlaceholder")}
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="pr-10 text-right"
+                    className={`${isRtl ? "pr-10 text-right" : "pl-10 text-left"}`}
                     required
                   />
                 </div>
@@ -135,25 +130,25 @@ export default function LoginPage() {
 
               {/* Password Field */}
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-right block">
-                  كلمة المرور
+                <Label htmlFor="password" className={`block ${isRtl ? "text-right" : "text-left"}`}>
+                  {t("passwordLabel")}
                 </Label>
                 <div className="relative">
-                  <Lock className="absolute right-3 top-3 h-4 w-4 text-gray-400" />
+                  <Lock className={`absolute ${isRtl ? "right-3" : "left-3"} top-3 h-4 w-4 text-gray-400`} />
                   <Input
                     id="password"
                     name="password"
                     type={showPassword ? "text" : "password"}
-                    placeholder="أدخل كلمة المرور"
+                    placeholder={t("passwordPlaceholder")}
                     value={formData.password}
                     onChange={handleInputChange}
-                    className="pr-10 pl-10 text-right"
+                    className={`${isRtl ? "pr-10 pl-10 text-right" : "pl-10 pr-10 text-left"}`}
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute left-3 top-3 text-gray-400 hover:text-gray-600"
+                    className={`absolute ${isRtl ? "left-3" : "right-3"} top-3 text-gray-400 hover:text-gray-600`}
                   >
                     {showPassword ? (
                       <EyeOff className="h-4 w-4" />
@@ -165,24 +160,25 @@ export default function LoginPage() {
               </div>
 
               {/* Remember Me & Forgot Password */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-reverse space-x-2">
+              <div className={`flex items-center justify-between ${isRtl ? "space-x-reverse" : ""}`}>
+                <div className={`flex items-center space-x-2 ${isRtl ? "space-x-reverse" : ""}`}>
                   <Checkbox
                     id="rememberMe"
+                    name="rememberMe"
                     checked={formData.rememberMe}
                     onCheckedChange={(checked) =>
-                      setFormData((prev) => ({ ...prev, rememberMe }))
+                      setFormData((prev) => ({ ...prev, rememberMe: checked }))
                     }
                   />
                   <Label htmlFor="rememberMe" className="text-sm text-gray-600">
-                    تذكرني
+                    {t("rememberMe")}
                   </Label>
                 </div>
                 <Link
                   href="/forgot-password"
                   className="text-sm text-red-600 hover:text-red-800"
                 >
-                  نسيت كلمة المرور؟
+                  {t("forgotPassword")}
                 </Link>
               </div>
 
@@ -194,11 +190,10 @@ export default function LoginPage() {
               >
                 {loading ? (
                   <>
-                    {" "}
-                    جار التسجيل <Loader className="animate-spin" />
+                    {t("loggingIn")} <Loader className="animate-spin" />
                   </>
                 ) : (
-                  "تسجيل الدخول"
+                  t("loginButton")
                 )}
               </Button>
             </form>
@@ -209,39 +204,31 @@ export default function LoginPage() {
                 <span className="w-full border-t" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-white px-2 text-gray-500">أو</span>
+                <span className="bg-white px-2 text-gray-500">{t("or")}</span>
               </div>
             </div>
 
             {/* Social Login */}
             <div className="space-y-3">
-              <Button
-                variant="outline"
-                className="w-full bg-transparent"
-                type="button"
-              >
+              <Button variant="outline" className="w-full bg-transparent" type="button">
                 <Chrome className="ml-2 h-4 w-4" />
-                تسجيل الدخول بـ Google
+                {t("loginWithGoogle")}
               </Button>
-              <Button
-                variant="outline"
-                className="w-full bg-transparent"
-                type="button"
-              >
+              <Button variant="outline" className="w-full bg-transparent" type="button">
                 <Facebook className="ml-2 h-4 w-4" />
-                تسجيل الدخول بـ Facebook
+                {t("loginWithFacebook")}
               </Button>
             </div>
 
             {/* Sign Up Link */}
-            <div className="text-center">
+            <div className="text-center" style={{ direction: isRtl ? "rtl" : "ltr" }}>
               <p className="text-gray-600">
-                ليس لديك حساب؟{" "}
+                {t("noAccount")}{" "}
                 <Link
                   href="/signup"
                   className="text-red-600 hover:text-red-800 font-medium"
                 >
-                  إنشاء حساب جديد
+                  {t("signUp")}
                 </Link>
               </p>
             </div>
@@ -249,21 +236,28 @@ export default function LoginPage() {
         </Card>
 
         {/* Footer Links */}
-        <div className="text-center mt-8 space-y-2">
-          <div className="flex justify-center space-x-reverse space-x-4 text-sm text-gray-600">
+        <div
+          className="text-center mt-8 space-y-2"
+          style={{ direction: isRtl ? "rtl" : "ltr" }}
+        >
+          <div
+            className={`flex justify-center space-x-4 text-sm text-gray-600 ${
+              isRtl ? "space-x-reverse" : ""
+            }`}
+          >
             <Link href="/privacy" className="hover:text-red-600">
-              سياسة الخصوصية
+              {t("privacyPolicy")}
             </Link>
             <span>•</span>
             <Link href="/terms" className="hover:text-red-600">
-              الشروط والأحكام
+              {t("termsConditions")}
             </Link>
             <span>•</span>
             <Link href="/help" className="hover:text-red-600">
-              المساعدة
+              {t("help")}
             </Link>
           </div>
-          <p className="text-xs text-gray-500">© 2024 جميع الحقوق محفوظة</p>
+          <p className="text-xs text-gray-500">{t("allRightsReserved")}</p>
         </div>
       </div>
     </div>

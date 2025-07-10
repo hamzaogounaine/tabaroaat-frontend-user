@@ -12,6 +12,32 @@
       "logout": "Logout",
       "openMenu": "Open menu",
       "logo": "Logo"
-    }
+    },
+    "Login" : {
+            "title": "Donations",
+            "welcomeBack": "Welcome back",
+            "loginTitle": "Login",
+            "loginSubtitle": "Enter your credentials to access your account",
+            "emailLabel": "Email",
+            "emailPlaceholder": "Enter your email",
+            "passwordLabel": "Password",
+            "passwordPlaceholder": "Enter your password",
+            "rememberMe": "Remember me",
+            "forgotPassword": "Forgot password?",
+            "loginButton": "Log In",
+            "loggingIn": "Logging in",
+            "or": "OR",
+            "loginWithGoogle": "Log in with Google",
+            "loginWithFacebook": "Log in with Facebook",
+            "noAccount": "Don't have an account?",
+            "signUp": "Sign up",
+            "privacyPolicy": "Privacy Policy",
+            "termsConditions": "Terms & Conditions",
+            "help": "Help",
+            "allRightsReserved": "© 2024 All rights reserved",
+            "loginFailed": "Login failed. Please try again.",
+            "noServerResponse": "No response from server. Check your internet connection.",
+            "unexpectedError": "An unexpected error occurred. Please try again."
+          }
   }
   

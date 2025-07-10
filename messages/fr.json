@@ -12,5 +12,32 @@
     "logout": "Se déconnecter",
     "openMenu": "Ouvrir le menu",
     "logo": "Logo"
+  },
+  "Login" :{
+    "title": "Dons",
+    "welcomeBack": "Bon retour",
+    "loginTitle": "Connexion",
+    "loginSubtitle": "Entrez vos informations pour accéder à votre compte",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "Entrez votre e-mail",
+    "passwordLabel": "Mot de passe",
+    "passwordPlaceholder": "Entrez votre mot de passe",
+    "rememberMe": "Se souvenir de moi",
+    "forgotPassword": "Mot de passe oublié ?",
+    "loginButton": "Se connecter",
+    "loggingIn": "Connexion en cours",
+    "or": "OU",
+    "loginWithGoogle": "Connexion avec Google",
+    "loginWithFacebook": "Connexion avec Facebook",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "signUp": "Créer un compte",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsConditions": "Conditions générales",
+    "help": "Aide",
+    "allRightsReserved": "© 2024 Tous droits réservés",
+    "loginFailed": "Échec de la connexion. Veuillez réessayer.",
+    "noServerResponse": "Pas de réponse du serveur. Vérifiez votre connexion internet.",
+    "unexpectedError": "Une erreur inattendue est survenue. Veuillez réessayer."
   }
+  
 }
