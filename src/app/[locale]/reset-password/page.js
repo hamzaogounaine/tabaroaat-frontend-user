@@ -22,8 +22,8 @@ export default function ResetPasswordPage() {
       className="min-h-screen bg-gradient-to-br bg-black/20 flex items-center justify-center p-4"
       dir={dir}
     >
-      <Suspense fallback={<div>{messages[currentLang]}</div>}>
-        <ResetPasswordForm lang={currentLang} />
+      <Suspense fallback={<div>{messages[locale]}</div>}>
+        <ResetPasswordForm lang={locale} />
       </Suspense>
     </div>
   );

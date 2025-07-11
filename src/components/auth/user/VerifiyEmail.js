@@ -35,7 +35,7 @@ export default function VerifyEmailComponent() {
       } catch (err) {
         console.error('Verification error:', err);
         setStatus('error');
-        setMessage(err.response?.data || 'حدث خطأ أثناء التحقق من بريدك الإلكتروني. يرجى المحاولة لاحقًا.');
+        setMessage(err.response?.data.message || 'حدث خطأ أثناء التحقق من بريدك الإلكتروني. يرجى المحاولة لاحقًا.');
       }
     };
 
@@ -43,7 +43,7 @@ export default function VerifyEmailComponent() {
   }, [searchParams, router]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center ">
       <div className="bg-white p-8 rounded-lg shadow-md text-center max-w-md w-full">
         {status === 'verifying' && (
           <>

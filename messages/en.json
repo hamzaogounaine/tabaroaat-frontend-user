@@ -1,60 +1,130 @@
 {
-    "Navbar": {
-      "brand": "Tabaroaat",
-      "home": "Home",
-      "donations": "Donations",
-      "about": "About Us",
-      "services": "Services",
-      "projects": "Projects",
-      "news": "News",
-      "contact": "Contact Us",
-      "donateNow": "Donate Now",
-      "logout": "Logout",
-      "openMenu": "Open menu",
-      "logo": "Logo"
+  "Navbar": {
+    "brand": "Tabaroaat",
+    "home": "Home",
+    "donations": "Donations",
+    "about": "About Us",
+    "services": "Services",
+    "projects": "Projects",
+    "news": "News",
+    "contact": "Contact Us",
+    "donateNow": "Donate Now",
+    "logout": "Logout",
+    "openMenu": "Open menu",
+    "logo": "Logo"
+  },
+  "Login": {
+    "title": "Donations",
+    "welcomeBack": "Welcome back",
+    "loginTitle": "Login",
+    "loginSubtitle": "Enter your credentials to access your account",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "loginButton": "Log In",
+    "loggingIn": "Logging in",
+    "or": "OR",
+    "loginWithGoogle": "Log in with Google",
+    "loginWithFacebook": "Log in with Facebook",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up",
+    "privacyPolicy": "Privacy Policy",
+    "termsConditions": "Terms & Conditions",
+    "help": "Help",
+    "allRightsReserved": "© 2024 All rights reserved",
+    "loginFailed": "Login failed. Please try again.",
+    "noServerResponse": "No response from server. Check your internet connection.",
+    "unexpectedError": "An unexpected error occurred. Please try again."
+  },
+  "forgotPassword": {
+    "title": "Forgot your password?",
+    "subtitle": "Enter your email address to receive a password reset link",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "sending": "Sending",
+    "sendButton": "Send reset link",
+    "success": "If the email is registered with us, you will receive a password reset link shortly.",
+    "error": "Failed to send the password reset link. Please try again.",
+    "remember": "Remembered your password?",
+    "login": "Log in",
+    "privacyPolicy": "Privacy Policy",
+    "termsConditions": "Terms & Conditions",
+    "help": "Help",
+    "allRightsReserved": "© 2024 All rights reserved"
+  },
+
+  "Register": {
+    "brand": "Tabaroaat",
+    "welcome": "Welcome to Tabaroaat!",
+    "title": "Create a New Account",
+    "subtitle": "Enter your details to create an account",
+
+    "firstName": "First Name",
+    "firstNamePlaceholder": "Enter your first name",
+
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Enter your last name",
+
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+
+    "dob": "Date of Birth",
+
+    "agreeTo": "I agree to the",
+    "terms": "Terms & Conditions",
+
+    "submitButton": "Create Account",
+    "loading": "Registering...",
+    "or": "OR",
+
+    "registerWithGoogle": "Register with Google",
+    "registerWithFacebook": "Register with Facebook",
+
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Log In",
+
+    "privacy": "Privacy Policy",
+    "help": "Help",
+    "rightsReserved": "All rights reserved",
+
+    "errors": {
+      "termsRequired": "You must accept the terms and conditions to proceed.",
+      "passwordLength": "Password must be at least 6 characters.",
+      "registerFailed": "Registration failed. Please try again.",
+      "noServer": "No response from server. Please check your internet connection.",
+      "unexpected": "An unexpected error occurred. Please try again."
+    }
+  },
+
+  "ResetPassword": {
+    "brand": "Tabaroaat",
+    "title": "Reset Password",
+    "subtitle": "Enter your new password",
+    "newPassword": "New Password",
+    "newPasswordPlaceholder": "Enter your new password",
+    "confirmPassword": "Confirm New Password",
+    "confirmPasswordPlaceholder": "Re-enter your new password",
+    "submitButton": "Reset Password",
+    "submitting": "Resetting...",
+    "backToLogin": "Remembered your password?",
+    "login": "Log In",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "help": "Help",
+    "rightsReserved": "© 2024 All rights reserved",
+    "errors": {
+      "missingToken": "Reset password token is missing in the link.",
+      "invalidToken": "Reset password token is not present.",
+      "passwordTooShort": "Password must be at least 6 characters.",
+      "passwordMismatch": "Passwords do not match.",
+      "resetFailed": "Failed to reset the password. Please try again."
     },
-    "Login" : {
-            "title": "Donations",
-            "welcomeBack": "Welcome back",
-            "loginTitle": "Login",
-            "loginSubtitle": "Enter your credentials to access your account",
-            "emailLabel": "Email",
-            "emailPlaceholder": "Enter your email",
-            "passwordLabel": "Password",
-            "passwordPlaceholder": "Enter your password",
-            "rememberMe": "Remember me",
-            "forgotPassword": "Forgot password?",
-            "loginButton": "Log In",
-            "loggingIn": "Logging in",
-            "or": "OR",
-            "loginWithGoogle": "Log in with Google",
-            "loginWithFacebook": "Log in with Facebook",
-            "noAccount": "Don't have an account?",
-            "signUp": "Sign up",
-            "privacyPolicy": "Privacy Policy",
-            "termsConditions": "Terms & Conditions",
-            "help": "Help",
-            "allRightsReserved": "© 2024 All rights reserved",
-            "loginFailed": "Login failed. Please try again.",
-            "noServerResponse": "No response from server. Check your internet connection.",
-            "unexpectedError": "An unexpected error occurred. Please try again."
-          },
-          "forgotPassword" : {
-            "title": "Forgot your password?",
-            "subtitle": "Enter your email address to receive a password reset link",
-            "emailLabel": "Email",
-            "emailPlaceholder": "Enter your email",
-            "sending": "Sending",
-            "sendButton": "Send reset link",
-            "success": "If the email is registered with us, you will receive a password reset link shortly.",
-            "error": "Failed to send the password reset link. Please try again.",
-            "remember": "Remembered your password?",
-            "login": "Log in",
-            "privacyPolicy": "Privacy Policy",
-            "termsConditions": "Terms & Conditions",
-            "help": "Help",
-            "allRightsReserved": "© 2024 All rights reserved"
-          }
-          
+    "success": "Password reset successfully. You can now log in."
   }
-  
+}

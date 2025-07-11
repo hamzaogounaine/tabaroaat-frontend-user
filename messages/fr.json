@@ -13,7 +13,7 @@
     "openMenu": "Ouvrir le menu",
     "logo": "Logo"
   },
-  "Login" :{
+  "Login": {
     "title": "Dons",
     "welcomeBack": "Bon retour",
     "loginTitle": "Connexion",
@@ -39,7 +39,7 @@
     "noServerResponse": "Pas de réponse du serveur. Vérifiez votre connexion internet.",
     "unexpectedError": "Une erreur inattendue est survenue. Veuillez réessayer."
   },
-  "forgotPassword" : {
+  "forgotPassword": {
     "title": "Mot de passe oublié ?",
     "subtitle": "Entrez votre adresse e-mail pour recevoir un lien de réinitialisation",
     "emailLabel": "E-mail",
@@ -54,7 +54,77 @@
     "termsConditions": "Conditions d'utilisation",
     "help": "Aide",
     "allRightsReserved": "© 2024 Tous droits réservés"
+  },
+
+  "Register": {
+    "brand": "Tabaroaat",
+    "welcome": "Bienvenue sur Tabaroaat !",
+    "title": "Créer un nouveau compte",
+    "subtitle": "Entrez vos informations pour créer un compte",
+
+    "firstName": "Prénom",
+    "firstNamePlaceholder": "Entrez votre prénom",
+
+    "lastName": "Nom de famille",
+    "lastNamePlaceholder": "Entrez votre nom de famille",
+
+    "email": "E-mail",
+    "emailPlaceholder": "Entrez votre adresse e-mail",
+
+    "password": "Mot de passe",
+    "passwordPlaceholder": "Entrez votre mot de passe",
+
+    "dob": "Date de naissance",
+
+    "agreeTo": "J'accepte les",
+    "terms": "Conditions générales",
+
+    "submitButton": "Créer un compte",
+    "loading": "Enregistrement en cours...",
+    "or": "OU",
+
+    "registerWithGoogle": "S'inscrire avec Google",
+    "registerWithFacebook": "S'inscrire avec Facebook",
+
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "login": "Connexion",
+
+    "privacy": "Politique de confidentialité",
+    "help": "Aide",
+    "rightsReserved": "Tous droits réservés",
+
+    "errors": {
+      "termsRequired": "Vous devez accepter les conditions générales pour continuer.",
+      "passwordLength": "Le mot de passe doit comporter au moins 6 caractères.",
+      "registerFailed": "L'inscription a échoué. Veuillez réessayer.",
+      "noServer": "Aucune réponse du serveur. Vérifiez votre connexion Internet.",
+      "unexpected": "Une erreur inattendue s'est produite. Veuillez réessayer."
+    }
+  },
+
+  "ResetPassword": {
+    "brand": "Tabaroaat",
+    "title": "Réinitialiser le mot de passe",
+    "subtitle": "Entrez votre nouveau mot de passe",
+    "newPassword": "Nouveau mot de passe",
+    "newPasswordPlaceholder": "Entrez votre nouveau mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "confirmPasswordPlaceholder": "Entrez à nouveau votre mot de passe",
+    "submitButton": "Réinitialiser le mot de passe",
+    "submitting": "Réinitialisation...",
+    "backToLogin": "Vous vous souvenez de votre mot de passe ?",
+    "login": "Se connecter",
+    "privacyPolicy": "Politique de confidentialité",
+    "terms": "Conditions générales",
+    "help": "Aide",
+    "rightsReserved": "© 2024 Tous droits réservés",
+    "errors": {
+      "missingToken": "Le jeton de réinitialisation du mot de passe est manquant dans le lien.",
+      "invalidToken": "Jeton de réinitialisation du mot de passe introuvable.",
+      "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères.",
+      "passwordMismatch": "Les mots de passe ne correspondent pas.",
+      "resetFailed": "Échec de la réinitialisation du mot de passe. Veuillez réessayer."
+    },
+    "success": "Mot de passe réinitialisé avec succès. Vous pouvez maintenant vous connecter."
   }
-  
-  
 }

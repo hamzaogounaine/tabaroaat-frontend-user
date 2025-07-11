@@ -1,215 +1,203 @@
-"use suspense"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Lock, Eye, EyeOff, Loader } from "lucide-react" // Import icons
-import axios from "axios"
-import { useRouter, useSearchParams } from "next/navigation" // For App Router
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useTranslations, useLocale } from "next-intl";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Lock, Eye, EyeOff, Loader } from "lucide-react";
+import axios from "axios";
 
-export default function ResetPasswordForm() {
-  const router = useRouter()
-  const searchParams = useSearchParams() // To get query parameters from the URL
-  const [token, setToken] = useState(null) // State to store the reset token from URL
-  const [newPassword, setNewPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
-  const [showNewPassword, setShowNewPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [message, setMessage] = useState(null) // For success or error messages
-  const [messageType, setMessageType] = useState(null) // 'success' or 'error'
+export default function ResetPasswordForm({ lang }) {
+  const t = useTranslations("ResetPassword");
+  const locale = useLocale();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const [token, setToken] = useState(null);
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState(null);
+  const [messageType, setMessageType] = useState(null);
 
   useEffect(() => {
- 
-    const urlToken = searchParams.get('token');
+    const urlToken = searchParams.get("token");
     if (urlToken) {
       setToken(urlToken);
     } else {
-      // Handle case where token is missing in the URL
-      setMessage("رمز إعادة تعيين كلمة السر مفقود في الرابط.");
-      setMessageType('error');
+      setMessage(t("errors.missingToken"));
+      setMessageType("error");
     }
-  }, [searchParams]);
-
+  }, [searchParams, t]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    setMessage(null) // Clear previous messages
-    setMessageType(null)
+    e.preventDefault();
+    setLoading(true);
+    setMessage(null);
+    setMessageType(null);
 
     if (!token) {
-      setMessage("رمز إعادة تعيين كلمة السر غير موجود.");
-      setMessageType('error');
+      setMessage(t("errors.invalidToken"));
+      setMessageType("error");
       setLoading(false);
       return;
     }
 
     if (newPassword.length < 6) {
-      setMessage("كلمة السر الجديدة يجب أن تكون 6 أحرف على الأقل.");
-      setMessageType('error');
+      setMessage(t("errors.passwordTooShort"));
+      setMessageType("error");
       setLoading(false);
       return;
     }
 
     if (newPassword !== confirmPassword) {
-      setMessage("كلمتا السر غير متطابقتين.");
-      setMessageType('error');
+      setMessage(t("errors.passwordMismatch"));
+      setMessageType("error");
       setLoading(false);
       return;
     }
 
     try {
-      // Call your backend endpoint to reset the password
-      // The backend endpoint is likely POST /user/reset-password/:token
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/reset-password/${token}`, { password: newPassword });
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/reset-password/${token}`,
+        { password: newPassword, lang: lang || locale }
+      );
 
-      if (res.status === 200) { // Backend returns 200 OK for success
-        setMessage(res.data.message || "تم إعادة تعيين كلمة السر بنجاح. يمكنك الآن تسجيل الدخول.");
-        setMessageType('success');
+      if (res.status === 200) {
+        setMessage(t("success"));
+        setMessageType("success");
         setNewPassword("");
         setConfirmPassword("");
-        // Redirect to login page after a short delay
-        setTimeout(() => {
-          router.push('/login');
-        }, 3000);
+        setTimeout(() => router.push("/login"), 3000);
       }
     } catch (err) {
-      console.error("Reset password error:", err);
-      setMessage(err.response?.data?.message || "فشل إعادة تعيين كلمة السر. يرجى المحاولة مرة أخرى.");
-      setMessageType('error');
+      setMessage(err.response?.data?.message || t("errors.resetFailed"));
+      setMessageType("error");
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
-    <div
-      className="min-h-screen bg-gradient-to-br bg-black/20 flex items-center justify-center p-4"
-      dir="rtl"
-    >
-      <div className="w-full max-w-md">
-        {/* Logo */}
+    <div className="min-h-screen bg-gradient-to-br flex items-center justify-center p-4" dir={locale === "ar" ? "rtl" : "ltr"}>
+      <div className="w-full ">
         <div className="text-center mb-8">
           <Link href="/" className="text-3xl font-bold text-red-600">
-            تبرعات
+            {t("brand")}
           </Link>
-          <p className="text-gray-600 mt-2">إعادة تعيين كلمة المرور</p>
+          <p className="text-gray-600 mt-2">{t("title")}</p>
         </div>
 
         <Card className="shadow-lg">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl font-bold text-gray-800">إعادة تعيين كلمة المرور</CardTitle>
-            <p className="text-gray-600">أدخل كلمة السر الجديدة لحسابك</p>
+            <CardTitle className="text-2xl font-bold text-gray-800">{t("title")}</CardTitle>
+            <p className="text-gray-600">{t("subtitle")}</p>
           </CardHeader>
+
           {message && (
             <div className="px-2">
-              <div className={`rounded text-white text-center py-2 ${messageType === 'success' ? 'bg-green-500' : 'bg-red-500'}`}>
+              <div className={`rounded text-white text-center py-2 ${messageType === "success" ? "bg-green-500" : "bg-red-500"}`}>
                 {message}
               </div>
             </div>
           )}
+
           <CardContent className="space-y-6">
             <form onSubmit={handleSubmit} className="space-y-4">
-              {/* New Password Field */}
-              <div className="space-y-2">
-                <Label htmlFor="newPassword" className="text-right block">
-                  كلمة السر الجديدة
-                </Label>
-                <div className="relative">
-                  <Lock className="absolute right-3 top-3 h-4 w-4 text-gray-400" />
-                  <Input
-                    id="newPassword"
-                    name="newPassword"
-                    type={showNewPassword ? "text" : "password"}
-                    placeholder="أدخل كلمة السر الجديدة"
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
-                    className="pr-10 pl-10 text-right"
-                    required
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowNewPassword(!showNewPassword)}
-                    className="absolute left-3 top-3 text-gray-400 hover:text-gray-600"
-                  >
-                    {showNewPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                  </button>
-                </div>
-              </div>
+              <PasswordInput
+                id="newPassword"
+                label={t("newPassword")}
+                placeholder={t("newPasswordPlaceholder")}
+                value={newPassword}
+                onChange={setNewPassword}
+                visible={showNewPassword}
+                toggleVisible={() => setShowNewPassword((prev) => !prev)}
+              />
+              <PasswordInput
+                id="confirmPassword"
+                label={t("confirmPassword")}
+                placeholder={t("confirmPasswordPlaceholder")}
+                value={confirmPassword}
+                onChange={setConfirmPassword}
+                visible={showConfirmPassword}
+                toggleVisible={() => setShowConfirmPassword((prev) => !prev)}
+              />
 
-              {/* Confirm Password Field */}
-              <div className="space-y-2">
-                <Label htmlFor="confirmPassword" className="text-right block">
-                  تأكيد كلمة السر الجديدة
-                </Label>
-                <div className="relative">
-                  <Lock className="absolute right-3 top-3 h-4 w-4 text-gray-400" />
-                  <Input
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    type={showConfirmPassword ? "text" : "password"}
-                    placeholder="أعد إدخال كلمة السر الجديدة"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="pr-10 pl-10 text-right"
-                    required
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute left-3 top-3 text-gray-400 hover:text-gray-600"
-                  >
-                    {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                  </button>
-                </div>
-              </div>
-
-              {/* Submit Button */}
               <Button type="submit" disabled={loading} className="w-full bg-red-600 hover:bg-red-700 text-white py-2">
                 {loading ? (
                   <>
-                    جاري إعادة التعيين <Loader className="animate-spin mr-2" />
+                    {t("submitting")} <Loader className="animate-spin mr-2" />
                   </>
                 ) : (
-                  'إعادة تعيين كلمة السر'
+                  t("submitButton")
                 )}
               </Button>
             </form>
 
-            {/* Back to Login Link */}
             <div className="text-center mt-4">
               <p className="text-gray-600">
-                تذكرت كلمة المرور؟{" "}
+                {t("backToLogin")}{" "}
                 <Link href="/login" className="text-red-600 hover:text-red-800 font-medium">
-                  تسجيل الدخول
+                  {t("login")}
                 </Link>
               </p>
             </div>
           </CardContent>
         </Card>
 
-        {/* Footer Links */}
         <div className="text-center mt-8 space-y-2">
           <div className="flex justify-center space-x-reverse space-x-4 text-sm text-gray-600">
             <Link href="/privacy" className="hover:text-red-600">
-              سياسة الخصوصية
+              {t("privacyPolicy")}
             </Link>
             <span>•</span>
             <Link href="/terms" className="hover:text-red-600">
-              الشروط والأحكام
+              {t("terms")}
             </Link>
             <span>•</span>
             <Link href="/help" className="hover:text-red-600">
-              المساعدة
+              {t("help")}
             </Link>
           </div>
-          <p className="text-xs text-gray-500">© 2024 جميع الحقوق محفوظة</p>
+          <p className="text-xs text-gray-500">{t("rightsReserved")}</p>
         </div>
       </div>
     </div>
-  )
+  );
+}
+
+function PasswordInput({ id, label, placeholder, value, onChange, visible, toggleVisible }) {
+  return (
+    <div className="space-y-2">
+      <Label htmlFor={id} className="text-right block">
+        {label}
+      </Label>
+      <div className="relative">
+        <Lock className="absolute right-3 top-3 h-4 w-4 text-gray-400" />
+        <Input
+          id={id}
+          name={id}
+          type={visible ? "text" : "password"}
+          placeholder={placeholder}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="pr-10 pl-10 text-right"
+          required
+        />
+        <button
+          type="button"
+          onClick={toggleVisible}
+          className="absolute left-3 top-3 text-gray-400 hover:text-gray-600"
+        >
+          {visible ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+        </button>
+      </div>
+    </div>
+  );
 }

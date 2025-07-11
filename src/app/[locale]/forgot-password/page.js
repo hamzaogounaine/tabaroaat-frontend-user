@@ -2,16 +2,19 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useTranslations } from "next-intl"; // or your i18n hook
+import { useLocale, useTranslations } from "next-intl"; // or your i18n hook
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Mail, Loader } from "lucide-react";
 import axios from "axios";
+import { useRouter } from "@/i18n/routing";
 
 export default function ForgotPasswordPage() {
   const t = useTranslations("forgotPassword"); // Assuming your JSON has a "ForgotPassword" namespace
+  const locale= useLocale()
+  const isRtl = locale === "ar";
 
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -24,11 +27,14 @@ export default function ForgotPasswordPage() {
     setMessage(null);
     setMessageType(null);
 
+    console.log('reset' , locale)
     try {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/sendResetPasswordLink`,
-        { email }
+        { email , lang:locale}
       );
+
+
       if (res.status === 200) {
         setMessage(
           res.data.message || t("success") // Use translation key "success"
@@ -49,7 +55,7 @@ export default function ForgotPasswordPage() {
   return (
     <div
       className="min-h-screen bg-gradient-to-br bg-black/20 flex items-center justify-center p-4"
-      dir={t("direction") || "ltr"} // You can add direction in your messages if needed
+      dir={isRtl ? "rtl" : "ltr"} // You can add direction in your messages if needed
     >
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
@@ -94,7 +100,7 @@ export default function ForgotPasswordPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="pr-10"
-                    required
+                    
                   />
                 </div>
               </div>

@@ -1,59 +1,128 @@
 {
-    "Navbar": {
-      "brand": "تبرعات",
-      "home": "الرئيسية",
-      "donations": "تبرعات",
-      "about": "من نحن",
-      "services": "الخدمات",
-      "projects": "المشاريع",
-      "news": "الأخبار",
-      "contact": "تواصل معنا",
-      "donateNow": "تبرع الآن",
-      "logout": "تسجيل الخروج",
-      "openMenu": "فتح القائمة",
-      "logo": "الشعار"
+  "Navbar": {
+    "brand": "تبرعات",
+    "home": "الرئيسية",
+    "donations": "تبرعات",
+    "about": "من نحن",
+    "services": "الخدمات",
+    "projects": "المشاريع",
+    "news": "الأخبار",
+    "contact": "تواصل معنا",
+    "donateNow": "تبرع الآن",
+    "logout": "تسجيل الخروج",
+    "openMenu": "فتح القائمة",
+    "logo": "الشعار"
+  },
+  "Login": {
+    "title": "تبرعات",
+    "welcomeBack": "مرحباً بك مرة أخرى",
+    "loginTitle": "تسجيل الدخول",
+    "loginSubtitle": "ادخل بياناتك للوصول إلى حسابك",
+    "emailLabel": "البريد الإلكتروني",
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+    "passwordLabel": "كلمة المرور",
+    "passwordPlaceholder": "أدخل كلمة المرور",
+    "rememberMe": "تذكرني",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "loginButton": "تسجيل الدخول",
+    "loggingIn": "جار التسجيل",
+    "or": "أو",
+    "loginWithGoogle": "تسجيل الدخول بـ Google",
+    "loginWithFacebook": "تسجيل الدخول بـ Facebook",
+    "noAccount": "ليس لديك حساب؟",
+    "signUp": "إنشاء حساب جديد",
+    "privacyPolicy": "سياسة الخصوصية",
+    "termsConditions": "الشروط والأحكام",
+    "help": "المساعدة",
+    "allRightsReserved": "© 2024 جميع الحقوق محفوظة",
+    "loginFailed": "فشل التسجيل. يرجى المحاولة مرة أخرى.",
+    "noServerResponse": "لا يوجد استجابة من الخادم. يرجى التحقق من اتصالك بالإنترنت.",
+    "unexpectedError": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى."
+  },
+  "forgotPassword": {
+    "title": "نسيت كلمة المرور؟",
+    "subtitle": "أدخل بريدك الإلكتروني لإرسال رابط إعادة تعيين كلمة المرور",
+    "emailLabel": "البريد الإلكتروني",
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+    "sending": "جاري الإرسال",
+    "sendButton": "إرسال رابط إعادة التعيين",
+    "success": "تم إرسال رابط إعادة تعيين كلمة السر إلى بريدك الإلكتروني.",
+    "error": "فشل إرسال رابط إعادة تعيين كلمة السر. يرجى المحاولة مرة أخرى.",
+    "remember": "تذكرت كلمة المرور؟",
+    "login": "تسجيل الدخول",
+    "privacyPolicy": "سياسة الخصوصية",
+    "termsConditions": "الشروط والأحكام",
+    "help": "المساعدة",
+    "allRightsReserved": "© 2024 جميع الحقوق محفوظة"
+  },
+  "Register": {
+    "brand": "تبرعات",
+    "welcome": "مرحباً بك في تبرعات!",
+    "title": "إنشاء حساب جديد",
+    "subtitle": "ادخل بياناتك لإنشاء حساب",
+
+    "firstName": "الاسم الأول",
+    "firstNamePlaceholder": "أدخل اسمك الأول",
+
+    "lastName": "الاسم الأخير",
+    "lastNamePlaceholder": "أدخل اسمك الأخير",
+
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+
+    "password": "كلمة المرور",
+    "passwordPlaceholder": "أدخل كلمة المرور",
+
+    "dob": "تاريخ الميلاد",
+
+    "agreeTo": "أوافق على",
+    "terms": "الشروط والأحكام",
+    "submitButton": "إنشاء حساب",
+    "loading": "جارٍ التسجيل...",
+    "or": "أو",
+
+    "registerWithGoogle": "التسجيل عبر Google",
+    "registerWithFacebook": "التسجيل عبر Facebook",
+
+    "alreadyHaveAccount": "لديك حساب بالفعل؟",
+    "login": "تسجيل الدخول",
+
+    "privacy": "سياسة الخصوصية",
+    "help": "المساعدة",
+    "rightsReserved": "جميع الحقوق محفوظة",
+
+    "errors": {
+      "termsRequired": "يجب الموافقة على الشروط والأحكام للمتابعة.",
+      "passwordLength": "كلمة المرور يجب أن تكون 6 أحرف على الأقل.",
+      "registerFailed": "فشل التسجيل. يرجى المحاولة مرة أخرى.",
+      "noServer": "لا يوجد استجابة من الخادم. يرجى التحقق من اتصالك بالإنترنت.",
+      "unexpected": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى."
+    }
+  },
+
+  "ResetPassword": {
+    "brand": "تبرعات",
+    "title": "إعادة تعيين كلمة المرور",
+    "subtitle": "أدخل كلمة السر الجديدة لحسابك",
+    "newPassword": "كلمة السر الجديدة",
+    "newPasswordPlaceholder": "أدخل كلمة السر الجديدة",
+    "confirmPassword": "تأكيد كلمة السر الجديدة",
+    "confirmPasswordPlaceholder": "أعد إدخال كلمة السر الجديدة",
+    "submitButton": "إعادة تعيين كلمة السر",
+    "submitting": "جاري إعادة التعيين",
+    "backToLogin": "تذكرت كلمة المرور؟",
+    "login": "تسجيل الدخول",
+    "privacyPolicy": "سياسة الخصوصية",
+    "terms": "الشروط والأحكام",
+    "help": "المساعدة",
+    "rightsReserved": "© 2024 جميع الحقوق محفوظة",
+    "errors": {
+      "missingToken": "رمز إعادة تعيين كلمة السر مفقود في الرابط.",
+      "invalidToken": "رمز إعادة تعيين كلمة السر غير موجود.",
+      "passwordTooShort": "كلمة السر الجديدة يجب أن تكون 6 أحرف على الأقل.",
+      "passwordMismatch": "كلمتا السر غير متطابقتين.",
+      "resetFailed": "فشل إعادة تعيين كلمة السر. يرجى المحاولة مرة أخرى."
     },
-    "Login" :{
-        "title": "تبرعات",
-        "welcomeBack": "مرحباً بك مرة أخرى",
-        "loginTitle": "تسجيل الدخول",
-        "loginSubtitle": "ادخل بياناتك للوصول إلى حسابك",
-        "emailLabel": "البريد الإلكتروني",
-        "emailPlaceholder": "أدخل بريدك الإلكتروني",
-        "passwordLabel": "كلمة المرور",
-        "passwordPlaceholder": "أدخل كلمة المرور",
-        "rememberMe": "تذكرني",
-        "forgotPassword": "نسيت كلمة المرور؟",
-        "loginButton": "تسجيل الدخول",
-        "loggingIn": "جار التسجيل",
-        "or": "أو",
-        "loginWithGoogle": "تسجيل الدخول بـ Google",
-        "loginWithFacebook": "تسجيل الدخول بـ Facebook",
-        "noAccount": "ليس لديك حساب؟",
-        "signUp": "إنشاء حساب جديد",
-        "privacyPolicy": "سياسة الخصوصية",
-        "termsConditions": "الشروط والأحكام",
-        "help": "المساعدة",
-        "allRightsReserved": "© 2024 جميع الحقوق محفوظة",
-        "loginFailed": "فشل التسجيل. يرجى المحاولة مرة أخرى.",
-        "noServerResponse": "لا يوجد استجابة من الخادم. يرجى التحقق من اتصالك بالإنترنت.",
-        "unexpectedError": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى."
-      },
-      "forgotPassword" : {
-        "title": "نسيت كلمة المرور؟",
-        "subtitle": "أدخل بريدك الإلكتروني لإرسال رابط إعادة تعيين كلمة المرور",
-        "emailLabel": "البريد الإلكتروني",
-        "emailPlaceholder": "أدخل بريدك الإلكتروني",
-        "sending": "جاري الإرسال",
-        "sendButton": "إرسال رابط إعادة التعيين",
-        "success": "تم إرسال رابط إعادة تعيين كلمة السر إلى بريدك الإلكتروني.",
-        "error": "فشل إرسال رابط إعادة تعيين كلمة السر. يرجى المحاولة مرة أخرى.",
-        "remember": "تذكرت كلمة المرور؟",
-        "login": "تسجيل الدخول",
-        "privacyPolicy": "سياسة الخصوصية",
-        "termsConditions": "الشروط والأحكام",
-        "help": "المساعدة",
-        "allRightsReserved": "© 2024 جميع الحقوق محفوظة"
-      }
+    "success": "تم إعادة تعيين كلمة السر بنجاح. يمكنك الآن تسجيل الدخول."
   }
-  
+}
