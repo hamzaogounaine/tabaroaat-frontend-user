@@ -126,5 +126,21 @@
       "resetFailed": "Échec de la réinitialisation du mot de passe. Veuillez réessayer."
     },
     "success": "Mot de passe réinitialisé avec succès. Vous pouvez maintenant vous connecter."
-  }
+  },
+  "VerifyDevice": {
+  "title": "Vérifier un nouvel appareil",
+  "description": "Nous avons détecté une tentative de connexion à partir d’un nouvel appareil ou d’une nouvelle adresse IP. Veuillez entrer le code de vérification à 6 chiffres envoyé à votre adresse e-mail.",
+  "emailLabel": "E-mail associé",
+  "codeLabel": "Code de vérification (6 chiffres)",
+  "placeholder": "Entrez le code ici",
+  "submit": "Vérifier l'appareil",
+  "verifying": "Vérification...",
+  "success": "Appareil vérifié avec succès ! Redirection en cours...",
+  "errorGeneric": "Une erreur s’est produite. Veuillez réessayer.",
+  "errorUnauthorized": "Accès non autorisé.",
+  "unauthorizedTitle": "Non autorisé",
+  "unauthorizedMessage": "Vous n’êtes pas autorisé à accéder à cette page. Retournez à la page d’accueil.",
+  "errorMissingFields": "L’e-mail et le code de vérification sont requis."
+}
+
 }

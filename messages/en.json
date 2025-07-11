@@ -126,5 +126,21 @@
       "resetFailed": "Failed to reset the password. Please try again."
     },
     "success": "Password reset successfully. You can now log in."
-  }
+  },
+  "VerifyDevice": {
+  "title": "Verify New Device",
+  "description": "We've detected a login attempt from a new device or IP address. Please enter the 6-digit verification code sent to your email.",
+  "emailLabel": "Associated Email",
+  "codeLabel": "Verification Code (6 digits)",
+  "placeholder": "Enter the code here",
+  "submit": "Verify Device",
+  "verifying": "Verifying...",
+  "success": "Device verified successfully! Redirecting...",
+  "errorGeneric": "An error occurred. Please try again.",
+  "errorUnauthorized": "Unauthorized access.",
+  "unauthorizedTitle": "Not Authorized",
+  "unauthorizedMessage": "You are not authorized to view this page. Please return to the homepage.",
+  "errorMissingFields": "Email and verification code are required."
+}
+
 }
