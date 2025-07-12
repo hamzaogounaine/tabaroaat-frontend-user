@@ -17,13 +17,15 @@ import {
   Loader,
 } from "lucide-react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 
 export default function LoginPage() {
   const router = useRouter();
   const t = useTranslations("Login");
   const locale = useLocale();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirectTo") || "/";
 
   const isRtl = locale === "ar";
 
@@ -55,6 +57,7 @@ export default function LoginPage() {
     // Basic example, often needs more attributes for production
     document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax; Secure";
   }
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -73,7 +76,8 @@ export default function LoginPage() {
       } else if (res.status === 200 || res.status === 201) {
         console.log(res.data.token)
         setCookie('token' , res.data.token , 1)
-        router.push("/");
+        router.push(redirectTo);
+
       } else {
         console.log("Unhandled successful response:", res);
       }

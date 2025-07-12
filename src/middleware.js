@@ -7,7 +7,7 @@ import createMiddleware from "next-intl/middleware";
 const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET);
 
 export async function middleware(request) {
-  const { pathname } = request.nextUrl;
+  const { pathname, origin } = request.nextUrl;
 
   // Locale detection
   const locale = pathname.split("/")[1];
@@ -33,7 +33,12 @@ export async function middleware(request) {
 
   if (!token) {
     console.log("⛔ No token found.");
-    return NextResponse.redirect(new URL(`/${locale}/login`, request.url));
+
+    // Save original path in query param
+    const loginUrl = new URL(`/${locale}/login`, origin);
+    loginUrl.searchParams.set("redirectTo", pathname); // ← this is key
+
+    return NextResponse.redirect(loginUrl);
   }
 
   try {
@@ -42,12 +47,15 @@ export async function middleware(request) {
     return NextResponse.next();
   } catch (err) {
     console.error("⛔ Invalid token:", err.message);
-    const response = NextResponse.redirect(new URL(`/${locale}/login`, request.url));
+    
+    const loginUrl = new URL(`/${locale}/login`, origin);
+    loginUrl.searchParams.set("redirectTo", pathname); // also redirect from expired token
+
+    const response = NextResponse.redirect(loginUrl);
     response.cookies.delete("token");
     return response;
   }
 }
-
 
 export const config = {
   matcher: [
