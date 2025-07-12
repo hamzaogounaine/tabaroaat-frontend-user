@@ -45,6 +45,17 @@ export default function LoginPage() {
     }));
   };
 
+  function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    // Basic example, often needs more attributes for production
+    document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax; Secure";
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -61,7 +72,7 @@ export default function LoginPage() {
         router.push("/verify-device");
       } else if (res.status === 200 || res.status === 201) {
         console.log(res.data.token)
-        setCookie('token' , res.data.token)
+        setCookie('token' , res.data.token , 1)
         router.push("/");
       } else {
         console.log("Unhandled successful response:", res);
