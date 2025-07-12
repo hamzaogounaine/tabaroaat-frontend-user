@@ -60,6 +60,8 @@ export default function LoginPage() {
         sessionStorage.setItem("deviceVerificationEmail", res.data.email);
         router.push("/verify-device");
       } else if (res.status === 200 || res.status === 201) {
+        console.log(res.data.token)
+        setCookie('token' , res.data.token)
         router.push("/");
       } else {
         console.log("Unhandled successful response:", res);
