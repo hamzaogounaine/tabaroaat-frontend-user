@@ -71,18 +71,18 @@ export default function VerifyDevicePage() {
   };
 
   // ❌ Unauthorized full-screen message
-  if (!authorized) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <div className="bg-white border border-red-300 text-center p-8 rounded-md shadow-md max-w-md w-full">
-          <h1 className="text-2xl font-bold text-red-600 mb-4">
-            {t("unauthorizedTitle")}
-          </h1>
-          <p className="text-gray-700">{t("unauthorizedMessage")}</p>
-        </div>
-      </div>
-    );
-  }
+  // if (!authorized) {
+  //   return (
+  //     <div className="min-h-screen flex items-center justify-center bg-gray-100">
+  //       <div className="bg-white border border-red-300 text-center p-8 rounded-md shadow-md max-w-md w-full">
+  //         <h1 className="text-2xl font-bold text-red-600 mb-4">
+  //           {t("unauthorizedTitle")}
+  //         </h1>
+  //         <p className="text-gray-700">{t("unauthorizedMessage")}</p>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
