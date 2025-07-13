@@ -1,39 +1,46 @@
-"use client"
+"use client";
 
-import { Card, CardContent } from "@/components/ui/card"
-import { Heart, Users, Globe, Award } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card";
+import { Heart, Users, Globe, Award } from "lucide-react";
+import { useTranslations, useLocale } from "next-intl";
+import Image from "next/image";
 
 export default function AboutSection() {
+  const t = useTranslations("AboutSection");
+  const locale = useLocale();
+
   const features = [
     {
       icon: Heart,
-      title: "الشفافية",
-      description: "نضمن وصول تبرعاتكم للمستحقين بكل شفافية ووضوح",
+      title: t("features.transparency.title"),
+      description: t("features.transparency.description"),
     },
     {
       icon: Users,
-      title: "الخبرة",
-      description: "أكثر من 15 عاماً من العمل الخيري والإنساني",
+      title: t("features.experience.title"),
+      description: t("features.experience.description"),
     },
     {
       icon: Globe,
-      title: "التأثير العالمي",
-      description: "نعمل في أكثر من 25 دولة حول العالم",
+      title: t("features.globalImpact.title"),
+      description: t("features.globalImpact.description"),
     },
     {
       icon: Award,
-      title: "الجودة",
-      description: "حاصلون على شهادات الجودة والاعتماد الدولية",
+      title: t("features.quality.title"),
+      description: t("features.quality.description"),
     },
-  ]
+  ];
 
   return (
-    <section className="py-20 bg-gray-50" dir="rtl">
+    <section className="py-20 bg-gray-50" dir={locale === "ar" ? "rtl" : "ltr"}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">من نحن</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            {t("sectionTitle")}
+          </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            نحن منظمة خيرية تهدف إلى تحسين حياة الأشخاص المحتاجين من خلال برامج التنمية المستدامة والمساعدات الإنسانية
+            {t("sectionDescription")}
           </p>
         </div>
 
@@ -51,20 +58,21 @@ export default function AboutSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <img
+            <Image
               src="/placeholder.svg?height=400&width=500"
-              alt="فريق العمل"
-              className="rounded-lg shadow-lg" />
+              alt={t("teamImageAlt")}
+              className="rounded-lg shadow-lg"
+              width={500}
+              height={400}
+            />
           </div>
           <div>
-            <h3 className="text-2xl font-bold mb-6">رسالتنا</h3>
+            <h3 className="text-2xl font-bold mb-6">{t("missionTitle")}</h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              نسعى لبناء مجتمع أكثر عدالة ورحمة من خلال تقديم المساعدة للمحتاجين وتمكين الأفراد والمجتمعات من تحقيق
-              إمكاناتهم الكاملة. نؤمن بأن كل شخص يستحق الحصول على الفرص الأساسية للعيش بكرامة.
+              {t("missionParagraph1")}
             </p>
             <p className="text-gray-600 leading-relaxed">
-              من خلال شراكاتنا المحلية والدولية، نعمل على تنفيذ برامج مستدامة في مجالات التعليم والصحة والتنمية
-              الاقتصادية والإغاثة الطارئة.
+              {t("missionParagraph2")}
             </p>
           </div>
         </div>

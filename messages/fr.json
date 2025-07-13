@@ -128,19 +128,56 @@
     "success": "Mot de passe réinitialisé avec succès. Vous pouvez maintenant vous connecter."
   },
   "VerifyDevice": {
-  "title": "Vérifier un nouvel appareil",
-  "description": "Nous avons détecté une tentative de connexion à partir d’un nouvel appareil ou d’une nouvelle adresse IP. Veuillez entrer le code de vérification à 6 chiffres envoyé à votre adresse e-mail.",
+  "title": "Vérification du nouvel appareil",
+  "instructions": "Nous avons détecté une tentative de connexion à partir d’un nouvel appareil. Veuillez entrer le code de vérification à 6 chiffres envoyé à votre adresse e-mail.",
   "emailLabel": "E-mail associé",
   "codeLabel": "Code de vérification (6 chiffres)",
-  "placeholder": "Entrez le code ici",
+  "codePlaceholder": "Entrez le code ici",
   "submit": "Vérifier l'appareil",
-  "verifying": "Vérification...",
+  "verifying": "Vérification en cours...",
   "success": "Appareil vérifié avec succès ! Redirection en cours...",
-  "errorGeneric": "Une erreur s’est produite. Veuillez réessayer.",
-  "errorUnauthorized": "Accès non autorisé.",
   "unauthorizedTitle": "Non autorisé",
-  "unauthorizedMessage": "Vous n’êtes pas autorisé à accéder à cette page. Retournez à la page d’accueil.",
-  "errorMissingFields": "L’e-mail et le code de vérification sont requis."
+  "unauthorizedMessage": "Vous n'êtes pas autorisé à accéder à cette page. Veuillez retourner à la page d'accueil.",
+  "errors": {
+    "required": "L’e-mail et le code de vérification sont requis.",
+    "network": "Une erreur est survenue. Veuillez réessayer plus tard."
+  }
+}
+,
+  "AboutSection": {
+    "sectionTitle": "Qui sommes-nous",
+    "sectionDescription": "Nous sommes une organisation caritative visant à améliorer la vie des personnes dans le besoin grâce à des programmes de développement durable et d'aide humanitaire.",
+    "features": {
+      "transparency": {
+        "title": "Transparence",
+        "description": "Nous garantissons que vos dons parviennent aux bénéficiaires en toute transparence."
+      },
+      "experience": {
+        "title": "Expérience",
+        "description": "Plus de 15 ans de travail humanitaire et caritatif."
+      },
+      "globalImpact": {
+        "title": "Impact mondial",
+        "description": "Nous opérons dans plus de 25 pays à travers le monde."
+      },
+      "quality": {
+        "title": "Qualité",
+        "description": "Certifié par des normes internationales de qualité et d'accréditation."
+      }
+    },
+    "missionTitle": "Notre mission",
+    "missionParagraph1": "Nous cherchons à construire une société plus juste et plus compatissante en soutenant les personnes dans le besoin et en donnant aux individus et aux communautés les moyens de réaliser leur plein potentiel. Nous croyons que chacun mérite les opportunités de base pour vivre dignement.",
+    "missionParagraph2": "Grâce à nos partenariats locaux et internationaux, nous mettons en œuvre des programmes durables dans les domaines de l'éducation, de la santé, du développement économique et des secours d'urgence.",
+    "teamImageAlt": "Équipe"
+  },
+  "HeroSection": {
+  "title": "Ensemble, construisons un avenir meilleur",
+  "subtitle": "Rejoignez-nous dans un voyage de générosité et de changement positif dans la société",
+  "donateNow": "Faire un don",
+  "learnMore": "En savoir plus",
+  "beneficiariesCount": "+10,000",
+  "beneficiariesLabel": "Bénéficiaires",
+  "imageAlt": "Enfants heureux"
 }
 
 }

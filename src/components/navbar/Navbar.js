@@ -98,7 +98,7 @@ export default function Navbar() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline">
-                  {languages.find((lang) => lang.code === locale)?.label ||
+                  {languages.find((lang) => lang.code === locale)?.code.toUpperCase() ||
                     "Language"}
                   <Languages />
                 </Button>
