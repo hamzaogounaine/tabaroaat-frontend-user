@@ -10,7 +10,7 @@ export async function middleware(request) {
   const { pathname, origin } = request.nextUrl;
 
   // Locale detection
-  const locale = pathname.split("/")[1];
+  const locale = request.cookies.get('NEXT_LOCALE')?.value || 'ar';
   const isLocale = routing.locales.includes(locale);
   const localeFromPath = isLocale ? locale : routing.defaultLocale;
 
