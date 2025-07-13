@@ -3,54 +3,56 @@ import { jwtVerify } from "jose";
 import { routing } from "./i18n/routing";
 import createMiddleware from "next-intl/middleware";
 
-// Create a secret key from your env
 const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET);
+
+const protectedPaths = ["/donate", "/profile"];
+
+const intlMiddleware = createMiddleware({
+  ...routing,
+  localeDetection: false, // disables auto-detecting browser locale
+});
 
 export async function middleware(request) {
   const { pathname, origin } = request.nextUrl;
 
-  // Locale detection
-  const locale = request.cookies.get('NEXT_LOCALE')?.value || 'ar';
+  // 1. Locale Handling
+  const locale = pathname.split("/")[1];
   const isLocale = routing.locales.includes(locale);
-  const localeFromPath = isLocale ? locale : routing.defaultLocale;
 
-  // Handle locale redirection
   if (!isLocale) {
-    const intlMiddleware = createMiddleware(routing);
-    return intlMiddleware(request);
+    const preferredLocale =
+      request.cookies.get('NEXT_LOCALE')?.value || routing.defaultLocale;
+  
+    return NextResponse.redirect(
+      new URL(`/${preferredLocale}${pathname}`, request.url)
+    );
   }
-
-  // Check if the route is protected
-  const protectedPaths = ["/donate", "/profile"];
+  // 2. Protected Routes (must be locale-prefixed paths)
   const isProtected = protectedPaths.some((path) =>
     pathname.startsWith(`/${locale}${path}`)
   );
 
-  if (!isProtected) return NextResponse.next();
+  if (!isProtected) {
+    return NextResponse.next();
+  }
 
-  // JWT check using jose (Edge-compatible)
+  // 3. Token Check
   const token = request.cookies.get("token")?.value;
 
   if (!token) {
-    console.log("⛔ No token found.");
-
-    // Save original path in query param
     const loginUrl = new URL(`/${locale}/login`, origin);
-    loginUrl.searchParams.set("redirectTo", pathname); // ← this is key
-
+    loginUrl.searchParams.set("redirectTo", pathname);
     return NextResponse.redirect(loginUrl);
   }
 
   try {
-    await jwtVerify(token, secret); // Will throw if invalid/expired
-    console.log("✅ Token is valid.");
+    await jwtVerify(token, secret); // will throw if invalid
     return NextResponse.next();
   } catch (err) {
     console.error("⛔ Invalid token:", err.message);
-    
-    const loginUrl = new URL(`/${locale}/login`, origin);
-    loginUrl.searchParams.set("redirectTo", pathname); // also redirect from expired token
 
+    const loginUrl = new URL(`/${locale}/login`, origin);
+    loginUrl.searchParams.set("redirectTo", pathname);
     const response = NextResponse.redirect(loginUrl);
     response.cookies.delete("token");
     return response;
@@ -58,8 +60,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: [
-    "/",
-    "/((?!api|_next|favicon.ico|.*\\..*).*)",
-  ],
+  matcher: ["/", "/((?!api|_next|favicon.ico|.*\\..*).*)"],
 };
