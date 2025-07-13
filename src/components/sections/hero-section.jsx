@@ -49,7 +49,7 @@ export default function HeroSection() {
             />
             <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-lg">
               <div className="flex items-center gap-4">
-                <Heart className="h-8 w-8 text-red-500" />
+                <Heart className="h-8 w-8 text-green-500" />
                 <div>
                   <p className="text-2xl font-bold text-gray-800">
                     {t("beneficiariesCount")}

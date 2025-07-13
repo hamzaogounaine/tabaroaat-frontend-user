@@ -88,7 +88,7 @@ export default function ResetPasswordForm({ lang }) {
     <div className="min-h-screen bg-gradient-to-br flex items-center justify-center p-4" dir={locale === "ar" ? "rtl" : "ltr"}>
       <div className="w-full ">
         <div className="text-center mb-8">
-          <Link href="/" className="text-3xl font-bold text-red-600">
+          <Link href="/" className="text-3xl font-bold text-green-600">
             {t("brand")}
           </Link>
           <p className="text-gray-600 mt-2">{t("title")}</p>
@@ -102,7 +102,7 @@ export default function ResetPasswordForm({ lang }) {
 
           {message && (
             <div className="px-2">
-              <div className={`rounded text-white text-center py-2 ${messageType === "success" ? "bg-green-500" : "bg-red-500"}`}>
+              <div className={`rounded text-white text-center py-2 ${messageType === "success" ? "bg-green-500" : "bg-green-500"}`}>
                 {message}
               </div>
             </div>
@@ -129,7 +129,7 @@ export default function ResetPasswordForm({ lang }) {
                 toggleVisible={() => setShowConfirmPassword((prev) => !prev)}
               />
 
-              <Button type="submit" disabled={loading} className="w-full bg-red-600 hover:bg-red-700 text-white py-2">
+              <Button type="submit" disabled={loading} className="w-full bg-green-600 hover:bg-green-700 text-white py-2">
                 {loading ? (
                   <>
                     {t("submitting")} <Loader className="animate-spin mr-2" />
@@ -143,7 +143,7 @@ export default function ResetPasswordForm({ lang }) {
             <div className="text-center mt-4">
               <p className="text-gray-600">
                 {t("backToLogin")}{" "}
-                <Link href="/login" className="text-red-600 hover:text-red-800 font-medium">
+                <Link href="/login" className="text-green-600 hover:text-green-800 font-medium">
                   {t("login")}
                 </Link>
               </p>
@@ -153,15 +153,15 @@ export default function ResetPasswordForm({ lang }) {
 
         <div className="text-center mt-8 space-y-2">
           <div className="flex justify-center space-x-reverse space-x-4 text-sm text-gray-600">
-            <Link href="/privacy" className="hover:text-red-600">
+            <Link href="/privacy" className="hover:text-green-600">
               {t("privacyPolicy")}
             </Link>
             <span>•</span>
-            <Link href="/terms" className="hover:text-red-600">
+            <Link href="/terms" className="hover:text-green-600">
               {t("terms")}
             </Link>
             <span>•</span>
-            <Link href="/help" className="hover:text-red-600">
+            <Link href="/help" className="hover:text-green-600">
               {t("help")}
             </Link>
           </div>

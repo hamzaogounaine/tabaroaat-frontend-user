@@ -32,10 +32,23 @@ export default async function LocaleLayout({ children, params: { locale } }) {
   }
 
   return (
-    <html lang={locale} className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html
+      lang={locale}
+      className={`${geistSans.variable} ${geistMono.variable}`}
+    >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap"
+          rel="stylesheet"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
           href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap"
           rel="stylesheet"
@@ -44,7 +57,7 @@ export default async function LocaleLayout({ children, params: { locale } }) {
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Navbar />
-          {children}
+          <div className="pt-20">{children}</div>
           <Analytics />
         </NextIntlClientProvider>
       </body>

@@ -59,7 +59,7 @@ export default function ForgotPasswordPage() {
     >
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="text-3xl font-bold text-red-600">
+          <Link href="/" className="text-3xl font-bold text-green-600">
             {t("brand") || "تبرعات"}
           </Link>
           <p className="text-gray-600 mt-2">{t("subtitle")}</p>
@@ -77,7 +77,7 @@ export default function ForgotPasswordPage() {
             <div className="px-2">
               <div
                 className={`rounded text-white text-center py-2 ${
-                  messageType === "success" ? "bg-green-500" : "bg-red-500"
+                  messageType === "success" ? "bg-green-500" : "bg-green-500"
                 }`}
               >
                 {message}
@@ -108,7 +108,7 @@ export default function ForgotPasswordPage() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-red-600 hover:bg-red-700 text-white py-2"
+                className="w-full bg-green-600 hover:bg-green-700 text-white py-2"
               >
                 {loading ? (
                   <>
@@ -125,7 +125,7 @@ export default function ForgotPasswordPage() {
                 {t("remember")}{" "}
                 <Link
                   href="/login"
-                  className="text-red-600 hover:text-red-800 font-medium"
+                  className="text-green-600 hover:text-green-800 font-medium"
                 >
                   {t("login")}
                 </Link>
@@ -136,15 +136,15 @@ export default function ForgotPasswordPage() {
 
         <div className="text-center mt-8 space-y-2">
           <div className="flex justify-center space-x-reverse space-x-4 text-sm text-gray-600">
-            <Link href="/privacy" className="hover:text-red-600">
+            <Link href="/privacy" className="hover:text-green-600">
               {t("privacyPolicy")}
             </Link>
             <span>•</span>
-            <Link href="/terms" className="hover:text-red-600">
+            <Link href="/terms" className="hover:text-green-600">
               {t("termsConditions")}
             </Link>
             <span>•</span>
-            <Link href="/help" className="hover:text-red-600">
+            <Link href="/help" className="hover:text-green-600">
               {t("help")}
             </Link>
           </div>

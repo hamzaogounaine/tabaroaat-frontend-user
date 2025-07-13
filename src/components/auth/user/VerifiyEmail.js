@@ -60,8 +60,8 @@ export default function VerifyEmailComponent() {
         )}
         {status === 'error' && (
           <>
-            <XCircle className="text-red-500 mx-auto mb-4 h-12 w-12" />
-            <h2 className="text-xl font-semibold text-red-700">{message}</h2>
+            <XCircle className="text-green-500 mx-auto mb-4 h-12 w-12" />
+            <h2 className="text-xl font-semibold text-green-700">{message}</h2>
             <p className="mt-4 text-gray-600">
               إذا استمرت المشكلة، يرجى الاتصال بالدعم.
             </p>

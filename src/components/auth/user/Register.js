@@ -100,7 +100,7 @@ export default function RegisterPage() {
     >
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="text-3xl font-bold text-red-600">
+          <Link href="/" className="text-3xl font-bold text-green-600">
             {t("brand")}
           </Link>
           <p className="text-gray-600 mt-2">{t("welcome")}</p>
@@ -114,7 +114,7 @@ export default function RegisterPage() {
 
           {error && (
             <div className="px-2">
-              <div className="rounded bg-red-500 text-white text-center py-1">
+              <div className="rounded bg-green-500 text-white text-center py-1">
                 {error}
               </div>
             </div>
@@ -210,7 +210,7 @@ export default function RegisterPage() {
                 />
                 <Label htmlFor="termsAccepted" className="text-sm text-gray-600">
                   {t("agreeTo")}{" "}
-                  <Link href="/terms" className="text-red-600 hover:text-red-800">
+                  <Link href="/terms" className="text-green-600 hover:text-green-800">
                     {t("terms")}
                   </Link>
                 </Label>
@@ -219,7 +219,7 @@ export default function RegisterPage() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-red-600 hover:bg-red-700 text-white py-2"
+                className="w-full bg-green-600 hover:bg-green-700 text-white py-2"
               >
                 {loading ? (
                   <>
@@ -254,7 +254,7 @@ export default function RegisterPage() {
             <div className="text-center">
               <p className="text-gray-600">
                 {t("alreadyHaveAccount")} {" "}
-                <Link href="/login" className="text-red-600 hover:text-red-800 font-medium">
+                <Link href="/login" className="text-green-600 hover:text-green-800 font-medium">
                   {t("login")}
                 </Link>
               </p>
@@ -264,15 +264,15 @@ export default function RegisterPage() {
 
         <div className="text-center mt-8 space-y-2">
           <div className="flex justify-center space-x-reverse space-x-4 text-sm text-gray-600">
-            <Link href="/privacy" className="hover:text-red-600">
+            <Link href="/privacy" className="hover:text-green-600">
               {t("privacy")}
             </Link>
             <span>•</span>
-            <Link href="/terms" className="hover:text-red-600">
+            <Link href="/terms" className="hover:text-green-600">
               {t("terms")}
             </Link>
             <span>•</span>
-            <Link href="/help" className="hover:text-red-600">
+            <Link href="/help" className="hover:text-green-600">
               {t("help")}
             </Link>
           </div>

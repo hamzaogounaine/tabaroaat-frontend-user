@@ -68,7 +68,7 @@ export default function VerifyDevicePage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <div className="bg-white border border-red-300 text-center p-8 rounded-md shadow-md max-w-md w-full">
-          <h1 className="text-2xl font-bold text-red-600 mb-4">
+          <h1 className="text-2xl font-bold text-green-600 mb-4">
             {t("unauthorizedTitle")}
           </h1>
           <p className="text-gray-700">{t("unauthorizedMessage")}</p>
@@ -113,12 +113,12 @@ export default function VerifyDevicePage() {
           </div>
 
           {message && <p className="text-green-600 text-center text-sm">{message}</p>}
-          {error && <p className="text-red-600 text-center text-sm">{error}</p>}
+          {error && <p className="text-green-600 text-center text-sm">{error}</p>}
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex justify-center py-2 px-4 bg-red-600 hover:bg-red-700 text-white rounded disabled:opacity-50"
+            className="w-full flex justify-center py-2 px-4 bg-green-600 hover:bg-green-700 text-white rounded disabled:opacity-50"
           >
             {loading ? t("verifying") : t("submit")}
           </button>

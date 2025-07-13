@@ -102,7 +102,7 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8" style={{ direction: isRtl ? "rtl" : "ltr" }}>
-          <Link href="/" className="text-3xl font-bold text-red-600">
+          <Link href="/" className="text-3xl font-bold text-green-600">
             {t("title")}
           </Link>
           <p className="text-gray-600 mt-2">{t("welcomeBack")}</p>
@@ -118,7 +118,7 @@ export default function LoginPage() {
 
           {error && (
             <div className="px-2">
-              <div className="rounded bg-red-500 text-white text-center py-1 text-sm">
+              <div className="rounded bg-green-500 text-white text-center py-1 text-sm">
                 {error}
               </div>
             </div>
@@ -194,7 +194,7 @@ export default function LoginPage() {
                 </div>
                 <Link
                   href="/forgot-password"
-                  className="text-sm text-red-600 hover:text-red-800"
+                  className="text-sm text-green-600 hover:text-green-800"
                 >
                   {t("forgotPassword")}
                 </Link>
@@ -204,7 +204,7 @@ export default function LoginPage() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-red-600 hover:bg-red-700 text-white py-2"
+                className="w-full bg-green-600 hover:bg-green-700 text-white py-2"
               >
                 {loading ? (
                   <>
@@ -244,7 +244,7 @@ export default function LoginPage() {
                 {t("noAccount")}{" "}
                 <Link
                   href="/signup"
-                  className="text-red-600 hover:text-red-800 font-medium"
+                  className="text-green-600 hover:text-green-800 font-medium"
                 >
                   {t("signUp")}
                 </Link>
@@ -263,15 +263,15 @@ export default function LoginPage() {
               isRtl ? "space-x-reverse" : ""
             }`}
           >
-            <Link href="/privacy" className="hover:text-red-600">
+            <Link href="/privacy" className="hover:text-green-600">
               {t("privacyPolicy")}
             </Link>
             <span>•</span>
-            <Link href="/terms" className="hover:text-red-600">
+            <Link href="/terms" className="hover:text-green-600">
               {t("termsConditions")}
             </Link>
             <span>•</span>
-            <Link href="/help" className="hover:text-red-600">
+            <Link href="/help" className="hover:text-green-600">
               {t("help")}
             </Link>
           </div>
