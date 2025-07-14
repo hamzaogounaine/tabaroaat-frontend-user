@@ -74,7 +74,7 @@ export default function LoginPage() {
         sessionStorage.setItem("deviceVerificationEmail", res.data.email);
         router.push("/verify-device");
       } else if (res.status === 200 || res.status === 201) {
-        console.log(res.data.token)
+        console.log('toen' ,res.data.token)
         setCookie('token' , res.data.token , 1)
         router.push(redirectTo);
 
@@ -118,7 +118,7 @@ export default function LoginPage() {
 
           {error && (
             <div className="px-2">
-              <div className="rounded bg-green-500 text-white text-center py-1 text-sm">
+              <div className="rounded bg-red-500 text-white text-center py-1 text-sm">
                 {error}
               </div>
             </div>
