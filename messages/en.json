@@ -128,22 +128,21 @@
     "success": "Password reset successfully. You can now log in."
   },
   "VerifyDevice": {
-  "title": "Verify New Device",
-  "instructions": "We've detected a login attempt from a new device. Please enter the 6-digit verification code sent to your email.",
-  "emailLabel": "Associated Email",
-  "codeLabel": "Verification Code (6 digits)",
-  "codePlaceholder": "Enter the code here",
-  "submit": "Verify Device",
-  "verifying": "Verifying...",
-  "success": "Device verified successfully! Redirecting...",
-  "unauthorizedTitle": "Not Authorized",
-  "unauthorizedMessage": "You are not authorized to view this page. Please return to the homepage.",
-  "errors": {
-    "required": "Email and verification code are required.",
-    "network": "An error occurred. Please try again later."
-  }
-}
-,
+    "title": "Verify New Device",
+    "instructions": "We've detected a login attempt from a new device. Please enter the 6-digit verification code sent to your email.",
+    "emailLabel": "Associated Email",
+    "codeLabel": "Verification Code (6 digits)",
+    "codePlaceholder": "Enter the code here",
+    "submit": "Verify Device",
+    "verifying": "Verifying...",
+    "success": "Device verified successfully! Redirecting...",
+    "unauthorizedTitle": "Not Authorized",
+    "unauthorizedMessage": "You are not authorized to view this page. Please return to the homepage.",
+    "errors": {
+      "required": "Email and verification code are required.",
+      "network": "An error occurred. Please try again later."
+    }
+  },
   "AboutSection": {
     "sectionTitle": "About Us",
     "sectionDescription": "We are a charitable organization aiming to improve the lives of those in need through sustainable development and humanitarian aid programs.",
@@ -171,13 +170,17 @@
     "teamImageAlt": "Team"
   },
   "HeroSection": {
-  "title": "Together We Build a Better Future",
-  "subtitle": "Join us on a journey of giving and positive change in the community",
-  "donateNow": "Donate Now",
-  "learnMore": "Learn More",
-  "beneficiariesCount": "+10,000",
-  "beneficiariesLabel": "Beneficiaries",
-  "imageAlt": "Happy children"
-}
-
+    "title": "Together We Build a Better Future",
+    "subtitle": "Join us on a journey of giving and positive change in the community",
+    "donateNow": "Donate Now",
+    "learnMore": "Learn More",
+    "beneficiariesCount": "+10,000",
+    "beneficiariesLabel": "Beneficiaries",
+    "imageAlt": "Happy children"
+  },
+  "DonatePage": {
+    "browseCategories": "Browse fundraisers by category",
+    "discoverTitle": "Discover {category} fundraisers on Tabaroaat",
+    "description": "Help others by donating to their fundraiser, or start one for someone you care about."
+  }
 }

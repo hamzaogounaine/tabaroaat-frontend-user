@@ -96,7 +96,7 @@ export default function LoginPage() {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-br bg-black/20 flex items-center justify-center p-4"
+      className="min-h-screen bg-gradient-to-br  flex items-center justify-center p-4"
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="w-full max-w-md">

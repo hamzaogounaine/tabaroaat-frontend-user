@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { Analytics } from "@vercel/analytics/next";
 import Navbar from "@/components/navbar/Navbar";
 import "../globals.css";
+import ApolloProviders from "./ApolloProvider";
 
 // Fonts
 const geistSans = Geist({
@@ -32,35 +33,37 @@ export default async function LocaleLayout({ children, params: { locale } }) {
   }
 
   return (
-    <html
-      lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable}`}
-    >
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap"
-          rel="stylesheet"
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <Navbar />
-          <div className="pt-20">{children}</div>
-          <Analytics />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <ApolloProviders>
+      <html
+        lang={locale}
+        className={`${geistSans.variable} ${geistMono.variable}`}
+      >
+        <head>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="anonymous"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap"
+            rel="stylesheet"
+          />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap"
+            rel="stylesheet"
+          />
+        </head>
+        <body>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <Navbar />
+            <div className="p-20 ">{children}</div>
+            <Analytics />
+          </NextIntlClientProvider>
+        </body>
+      </html>
+    </ApolloProviders>
   );
 }

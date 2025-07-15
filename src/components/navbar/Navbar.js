@@ -9,6 +9,7 @@ import axios from "axios"
 import { useTranslations, useLocale } from "next-intl"
 import { usePathname, useRouter } from "@/i18n/routing"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import Image from "next/image"
 
 export default function ModernNavbar() {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -75,7 +76,7 @@ export default function ModernNavbar() {
           <div className="flex-shrink-0">
             <Link href="/" className="group flex items-center space-x-2">
               <div className="w-20 h-20 bg-gradient-to-br  rounded-xl flex items-center justify-center">
-                <img src="https://res.cloudinary.com/dioamie16/image/upload/v1752420971/donation_project_images/donation_logo_v1.png" />
+                <Image src="https://res.cloudinary.com/dioamie16/image/upload/v1752420971/donation_project_images/donation_logo_v1.png" height={60} width={60}/>
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">
                 {t("brand")}
@@ -137,7 +138,7 @@ export default function ModernNavbar() {
             )}
 
             <Link href="/donate">
-              <Button className="h-11 px-6 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <Button className="primary-btn text-white  hover:scale-105">
                 {t("donateNow")}
               </Button>
             </Link>
