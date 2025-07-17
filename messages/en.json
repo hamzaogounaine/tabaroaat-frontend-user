@@ -181,6 +181,7 @@
   "DonatePage": {
     "browseCategories": "Browse fundraisers by category",
     "discoverTitle": "Discover {category} fundraisers on Tabaroaat",
-    "description": "Help others by donating to their fundraiser, or start one for someone you care about."
+    "description": "Help others by donating to their fundraiser, or start one for someone you care about.",
+    "startFundraising": "Start a fundraising"
   }
 }

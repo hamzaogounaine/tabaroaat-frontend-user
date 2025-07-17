@@ -12,7 +12,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20"
+      className="relative bg-gradient-to-br   py-20"
       dir={locale === "ar" ? "rtl" : "ltr"}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -20,7 +20,7 @@ export default function HeroSection() {
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               {t("title")}
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100">
+            <p className="text-xl md:text-2xl mb-8 text-gray-500">
               {t("subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -34,7 +34,7 @@ export default function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-blue-600 text-lg px-8 py-3 bg-transparent">
+                className="border-white  hover:bg-white hover:text-blue-600 text-lg px-8 py-3 bg-transparent">
                 {t("learnMore")}
               </Button>
             </div>

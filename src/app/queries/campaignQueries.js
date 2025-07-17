@@ -24,4 +24,20 @@ query GetCategorie($name : String!) {
 }
 `
 
-export { GET_CATEGORIES , GET_CATEGORIE};
+const GET_CAMPAIGN = gql`
+query getCampaign($categorie : String!) {
+  getCampaign(categorie : $categorie) {
+  campaignName
+  }
+}
+
+`
+const GET_CAMPAIGNS = gql`
+query {
+  campaigns {
+    campaignName
+  }
+}
+`
+
+export { GET_CATEGORIES , GET_CATEGORIE, GET_CAMPAIGNS , GET_CAMPAIGN};
