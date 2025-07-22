@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 const GET_CATEGORIES = gql`
-  query Categorie($lang: String!) {
+  query categories($lang: String!) {
     categories(lang: $lang) {
       origin_name
       name  
@@ -12,9 +12,8 @@ const GET_CATEGORIES = gql`
 
 
 const GET_CATEGORIE = gql`
-query GetCategorie($name : String!) {
-    getCategorie(name : $name) {
-        name
+query getCategorie($name : String!) {
+    getCategorie(name : $name) {  
         id
         ar_name
         fr_name
@@ -25,15 +24,28 @@ query GetCategorie($name : String!) {
 `
 
 const GET_CAMPAIGN = gql`
-query getCampaign($categorie : String!) {
-  getCampaign(categorie : $categorie) {
-  campaignName
+query campaignsByCategory($categorie : String! , $lang : String!) {
+  campaignsByCategory(categorie : $categorie, lang : $lang) {
+    _id
+    campaignName
+    description
+    tags
+    raiser_id
+   	categorie 
+    goalAmount
+    currentAmount
+    createdAt
+    deadline
+    donorsCount
+    image
   }
+
+  
 }
 
 `
 const GET_CAMPAIGNS = gql`
-query {
+query campaigns{
   campaigns {
     campaignName
   }

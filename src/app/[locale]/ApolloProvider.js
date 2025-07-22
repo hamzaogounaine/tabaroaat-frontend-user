@@ -3,7 +3,7 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: process.env.NEXT_PUBLIC_BACKEND_URL,
+  uri: process.env.NEXT_PUBLIC_DATA_URL,
   cache: new InMemoryCache(),
 });
 

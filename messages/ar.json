@@ -180,6 +180,7 @@
     "browseCategories": "تصفح الحملات حسب الفئة",
     "discoverTitle": "اكتشف حملات {category} على تبرعات",
     "description": "ساعد الآخرين من خلال التبرع لحملاتهم، أو أنشئ حملة لمن تهتم بهم.",
-    "startFundraising": "ابدأ حملة تبرع"
+    "startFundraising": "ابدأ حملة تبرع",
+    "browseFundraisersByCategory": "تصفح حملات {category} على تبرعات"
   }
 }

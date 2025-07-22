@@ -183,7 +183,9 @@
     "browseCategories": "Parcourir les collectes de fonds par catégorie",
     "discoverTitle": "Découvrez les collectes {category} sur Tabaroaat",
     "description": "Aidez les autres en faisant un don à leur collecte ou lancez-en une pour quelqu'un qui vous est cher.",
-    "startFundraising": "Démarrer une collecte de fonds"
+    "startFundraising": "Démarrer une collecte de fonds",
+    "browseFundraisersByCategory": "Parcourez les collectes {category} sur Tabaroaat"
+
 }
 
 }
